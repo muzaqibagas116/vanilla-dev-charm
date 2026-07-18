@@ -14,12 +14,41 @@ import {
   X,
   MapPin,
   Sparkles,
+  PhoneCall,
+  Instagram,
 } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import profileImg from "@/assets/profile.jpg";
 import heroBg from "@/assets/hero-bg.jpg";
+
 import project1 from "@/assets/project-1.jpg";
 import project2 from "@/assets/project-2.jpg";
 import project3 from "@/assets/project-3.jpg";
+import project4 from "@/assets/project-4.png";
+import project5 from "@/assets/project-5.png";
+
+import html from "@/assets/html.png";
+import css from "@/assets/css.png";
+import javascript from "@/assets/javascript.png";
+import typescript from "@/assets/typescript.png";
+import php from "@/assets/php.png";
+
+import laravel from "@/assets/laravel.png";
+import angular from "@/assets/angular.png";
+import express from "@/assets/express.png";
+
+import mysql from "@/assets/mysql.png";
+import dbeaver from "@/assets/dbeaver.png";
+
+import github from "@/assets/github.png";
+import figma from "@/assets/figma.png";
+import vscode from "@/assets/vscode.png";
 
 export const Route = createFileRoute("/")({
   component: PortfolioPage,
@@ -35,43 +64,71 @@ const NAV = [
 ];
 
 const SKILLS = [
-  { name: "HTML", cat: "Frontend" },
-  { name: "CSS", cat: "Frontend" },
-  { name: "JavaScript", cat: "Frontend" },
-  { name: "TypeScript", cat: "Frontend" },
-  { name: "Angular", cat: "Frontend" },
-  { name: "Bootstrap", cat: "Frontend" },
-  { name: "Node.js", cat: "Backend" },
-  { name: "Express.js", cat: "Backend" },
-  { name: "PHP", cat: "Backend" },
-  { name: "Laravel", cat: "Backend" },
-  { name: "MySQL", cat: "Database" },
-  { name: "Git", cat: "Tools" },
-  { name: "GitHub", cat: "Tools" },
+  { name: "HTML", cat: "Language", image: html },
+  { name: "CSS", cat: "Language", image: css },
+  { name: "JavaScript", cat: "Language", image: javascript },
+  { name: "TypeScript", cat: "Language", image: typescript },
+  { name: "PHP", cat: "Language", image: php },
+
+  { name: "Laravel", cat: "framework", image: laravel },
+  { name: "Angular", cat: "Framework", image: angular },    
+  { name: "Express.js", cat: "framework", image: express },
+
+  { name: "MySQL", cat: "Database", image: mysql },
+  { name: "DBeaver", cat: "Database", image: dbeaver },
+  
+  { name: "GitHub", cat: "Tools", image: github },
+  { name: "Figma", cat: "Tools", image: figma },
+  { name: "VS Code", cat: "Tools", image: vscode },
 ];
 
 const PROJECTS = [
   {
-    title: "Nova Commerce Dashboard",
+    title: "GearVenture",
     desc: "Admin analytics dashboard with real-time sales metrics, order management, and inventory tracking.",
-    tech: ["Angular", "TypeScript", "Node.js", "MySQL"],
-    image: project1,
+    overview: [
+      "GearVenture is a web-based outdoor equipment rental platform designed to make it easier for users to discover and rent various camping and hiking essentials. The application provides a catalog of outdoor equipment complete with product information and rental prices, allowing users to choose the gear that best suits their adventure needs.",
+
+      "In addition to the product catalog, GearVenture provides promotional information, search functionality, customer testimonials, and contact services to enhance the user experience. With a responsive and user-friendly interface, GearVenture aims to provide a practical and efficient way for users to find information and rent outdoor equipment.",
+    ],
+    tech: [
+      { name: "Angular", image: angular },
+      { name: "TypeScript", image: typescript },
+      { name: "MySQL", image: mysql },
+    ],
+    image: project5,
+    modalImage: project4,
     live: "#",
     code: "#",
   },
   {
     title: "TaskFlow Kanban",
     desc: "Collaborative task manager with drag-and-drop kanban boards, teams, and progress reporting.",
-    tech: ["Laravel", "PHP", "Bootstrap", "MySQL"],
+    overview:
+      "A productivity app tailored for distributed teams who need smooth task collaboration, deadline visibility, and clearer work tracking.",      
+    tech: [
+      { name: "Laravel", image: laravel },
+      { name: "PHP", image: php },
+      { name: "MySQL", image: mysql },
+    ],
     image: project2,
+    modalImage: project3,
     live: "#",
     code: "#",
   },
   {
     title: "Saveur Restaurant Site",
     desc: "Elegant restaurant landing page with online menu, reservation flow, and CMS-ready content.",
-    tech: ["JavaScript", "HTML", "CSS", "Express.js"],
+    overview:
+      "A polished restaurant website crafted to showcase the brand, simplify reservations, and present the menu in a visually appealing format.",    
+    tech: [
+      { name: "JavaScript", image: javascript },
+      { name: "HTML", image: html },
+      { name: "CSS", image: css },
+      { name: "Express.js", image: express },
+    ],
     image: project3,
+    modalImage: project2,
     live: "#",
     code: "#",
   },
@@ -79,22 +136,16 @@ const PROJECTS = [
 
 const EXPERIENCE = [
   {
-    role: "Full-Stack Web Developer",
-    company: "Freelance",
-    period: "2023 — Present",
-    desc: "Building custom web applications for small businesses, focused on performance, accessibility, and clean UX.",
+    role: "PT Amerta Indah Otsuka",
+    company: "Fullstack Developer",
+    period: "Feb 2026 - Present",
+    desc: "Developed and maintained web application features using Angular and Express.js, including API integration and database management to support application stability.",
   },
   {
     role: "Web Developer",
-    company: "PT Digital Nusantara",
-    period: "2021 — 2023",
-    desc: "Developed enterprise dashboards with Angular and Laravel, integrated with legacy MySQL systems.",
-  },
-  {
-    role: "Junior Developer",
-    company: "Kreatif Studio",
-    period: "2020 — 2021",
-    desc: "Built responsive marketing sites and internal tools with PHP, JavaScript, and Bootstrap.",
+    company: "Department of Forest Products, IPB University",
+    period: "Jul 2025 - Dec 2025",
+    desc: "Designed and developed SISTA DHH, a Laravel-based seminar and thesis information system with multi-role access, document management, and automated PDF/Excel export features.",
   },
 ];
 
@@ -117,6 +168,7 @@ function PortfolioPage() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [showTop, setShowTop] = useState(false);
+  const [selectedProject, setSelectedProject] = useState<(typeof PROJECTS)[number] | null>(null);
 
   useEffect(() => {
     const onScroll = () => {
@@ -155,11 +207,8 @@ function PortfolioPage() {
         }`}
       >
         <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <a href="#home" className="flex items-center gap-2 font-display font-bold text-lg">
-            <span className="grid h-8 w-8 place-items-center rounded-lg bg-gradient-primary text-primary-foreground shadow-glow">
-              <Code2 className="h-4 w-4" />
-            </span>
-            <span>Ahmad<span className="text-gradient">.dev</span></span>
+          <a href="#home" className="flex items-center gap-2 font-display font-bold text-lg">            
+            <span>Anggito Rangkuti Bagas Muzaqi</span>
           </a>
 
           <ul className="hidden md:flex items-center gap-1">
@@ -228,13 +277,9 @@ function PortfolioPage() {
 
         <div className="mx-auto max-w-6xl px-6">
           <div className="grid gap-12 md:grid-cols-[1.3fr_1fr] md:items-center">
-            <div className="animate-fade-up">
-              <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card/60 backdrop-blur px-3 py-1 text-xs font-medium text-muted-foreground">
-                <Sparkles className="h-3 w-3 text-accent" />
-                Available for new opportunities
-              </span>
+            <div className="animate-fade-up">              
               <h1 className="mt-6 font-display text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.05]">
-                Hi, I'm <span className="text-gradient">Ahmad Rizky</span>
+                Hi, I'm <span className="text-gradient">Anggito Rangkuti Bagas Muzaqi</span>
                 <br />
                 <span className="text-foreground/90">a Web Developer.</span>
               </h1>
@@ -260,9 +305,7 @@ function PortfolioPage() {
               </div>
 
               <div className="mt-10 flex items-center gap-6 text-sm text-muted-foreground">
-                <div className="flex items-center gap-2"><MapPin className="h-4 w-4" /> Jakarta, ID</div>
-                <div className="h-4 w-px bg-border" />
-                <div className="font-mono">3+ years experience</div>
+                <div className="flex items-center gap-2"><MapPin className="h-4 w-4" /> Tangerang, ID</div>                                
               </div>
             </div>
 
@@ -270,14 +313,14 @@ function PortfolioPage() {
               <div className="absolute -inset-6 bg-gradient-primary opacity-20 blur-3xl rounded-full" />
               <div className="relative rounded-2xl border border-border bg-card p-4 shadow-card">
                 <pre className="font-mono text-xs leading-relaxed text-muted-foreground overflow-hidden">
-{`const dev = {
-  name: "Ahmad Rizky",
-  role: "Web Developer",
-  stack: ["TS", "Angular",
-          "Laravel", "Node"],
-  coffee: true,
-  shipping: "always" 
-};`}
+                  {`const dev = {
+                    name: "Ahmad Rizky",
+                    role: "Web Developer",
+                    stack: ["TS", "Angular",
+                            "Laravel", "Node"],
+                    coffee: true,
+                    shipping: "always" 
+                  };`}
                 </pre>
                 <div className="mt-3 flex gap-1.5">
                   <span className="h-2 w-2 rounded-full bg-destructive/70" />
@@ -293,7 +336,7 @@ function PortfolioPage() {
       {/* ABOUT */}
       <section id="about" className="py-24 border-t border-border">
         <div className="mx-auto max-w-6xl px-6">
-          <SectionHeader eyebrow="About" title="A bit about me" />
+          <SectionHeader eyebrow="About"/>
           <div className="mt-12 grid gap-12 md:grid-cols-[auto_1fr] md:items-center" data-reveal>
             <div className="relative mx-auto md:mx-0">
               <div className="absolute -inset-3 bg-gradient-primary opacity-30 blur-2xl rounded-2xl" />
@@ -333,16 +376,25 @@ function PortfolioPage() {
       {/* SKILLS */}
       <section id="skills" className="py-24 border-t border-border bg-secondary/30">
         <div className="mx-auto max-w-6xl px-6">
-          <SectionHeader eyebrow="Skills" title="Tools I work with" />
+          <SectionHeader eyebrow="Skills"/>
           <div className="mt-12 grid gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5" data-reveal>
-            {SKILLS.map((s) => (
+            {SKILLS.map((s) => (                            
               <div
-                key={s.name}
-                className="group rounded-xl border border-border bg-card p-4 shadow-card hover:border-primary/50 hover:-translate-y-1 transition-all duration-300"
-              >
-                <div className="text-xs font-mono text-muted-foreground">{s.cat}</div>
-                <div className="mt-1 font-display font-semibold group-hover:text-gradient transition-colors">
-                  {s.name}
+                key={s.name}                
+                className="group flex items-center gap-4 rounded-xl border border-border bg-card p-4 shadow-card hover:border-primary/50 hover:-translate-y-1 transition-all duration-300"
+              >           
+                <img
+                  src={s.image}
+                  alt={s.name}
+                  width={48}
+                  height={48}
+                  className="h-12 w-12 object-contain"
+                />
+                <div>
+                  <div className="text-xs font-mono text-muted-foreground">{s.cat}</div>
+                  <div className="mt-1 font-display font-semibold group-hover:text-gradient transition-colors">
+                    {s.name}
+                  </div>
                 </div>
               </div>
             ))}
@@ -353,13 +405,22 @@ function PortfolioPage() {
       {/* PROJECTS */}
       <section id="projects" className="py-24 border-t border-border">
         <div className="mx-auto max-w-6xl px-6">
-          <SectionHeader eyebrow="Projects" title="Selected work" />
+          <SectionHeader eyebrow="Projects"/>
           <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {PROJECTS.map((p) => (
               <article
                 key={p.title}
                 data-reveal
-                className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-card hover:shadow-glow hover:-translate-y-1 transition-all duration-300"
+                role="button"
+                tabIndex={0}
+                onClick={() => setSelectedProject(p)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    setSelectedProject(p);
+                  }
+                }}
+                className="group flex cursor-pointer flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-card hover:shadow-glow hover:-translate-y-1 transition-all duration-300"
               >
                 <div className="relative aspect-[16/10] overflow-hidden bg-secondary">
                   <img
@@ -375,30 +436,27 @@ function PortfolioPage() {
                   <h3 className="font-display text-lg font-semibold">{p.title}</h3>
                   <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
                   <div className="mt-4 flex flex-wrap gap-1.5">
-                    {p.tech.map((t) => (
+                    {p.tech.map((tech) => (
                       <span
-                        key={t}
+                        key={tech.name}
                         className="rounded-md border border-border bg-secondary px-2 py-0.5 text-xs font-mono text-secondary-foreground"
                       >
-                        {t}
+                        {tech.name}
                       </span>
                     ))}
                   </div>
                   <div className="mt-6 flex gap-2 pt-2 border-t border-border">
-                    <a
-                      href={p.live}
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setSelectedProject(p);
+                      }}
                       className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-md bg-gradient-primary px-3 py-2 text-xs font-semibold text-primary-foreground hover:opacity-90"
                     >
                       <ExternalLink className="h-3.5 w-3.5" />
-                      View Project
-                    </a>
-                    <a
-                      href={p.code}
-                      className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-md border border-border px-3 py-2 text-xs font-semibold hover:bg-secondary"
-                    >
-                      <Github className="h-3.5 w-3.5" />
-                      Source Code
-                    </a>
+                      View Details
+                    </button>
                   </div>
                 </div>
               </article>
@@ -410,7 +468,7 @@ function PortfolioPage() {
       {/* EXPERIENCE */}
       <section id="experience" className="py-24 border-t border-border bg-secondary/30">
         <div className="mx-auto max-w-4xl px-6">
-          <SectionHeader eyebrow="Experience" title="My journey so far" />
+          <SectionHeader eyebrow="Experience"/>
           <ol className="mt-12 relative border-l border-border pl-8 space-y-10">
             {EXPERIENCE.map((e, i) => (
               <li key={i} data-reveal className="relative">
@@ -431,30 +489,24 @@ function PortfolioPage() {
 
       {/* CONTACT */}
       <section id="contact" className="py-24 border-t border-border">
-        <div className="mx-auto max-w-3xl px-6 text-center" data-reveal>
-          <SectionHeader eyebrow="Contact" title="Let's build something together" center />
+        <div className="mx-auto max-w-5xl px-6 text-center" data-reveal>
+          <SectionHeader eyebrow="Contact" center />
           <p className="mt-4 text-muted-foreground">
             Have a project in mind or just want to say hello? My inbox is always open.
           </p>
-          <div className="mt-10 grid gap-4 sm:grid-cols-3">
-            <ContactCard icon={<Mail className="h-5 w-5" />} label="Email" value="ahmad@example.com" href="mailto:ahmad@example.com" />
-            <ContactCard icon={<Github className="h-5 w-5" />} label="GitHub" value="@ahmadrizky" href="https://github.com" />
-            <ContactCard icon={<Linkedin className="h-5 w-5" />} label="LinkedIn" value="Ahmad Rizky" href="https://linkedin.com" />
-          </div>
-          <a
-            href="mailto:ahmad@example.com"
-            className="mt-10 inline-flex items-center gap-2 rounded-lg bg-gradient-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-glow hover:-translate-y-0.5 transition-transform"
-          >
-            <Mail className="h-4 w-4" />
-            Say hello
-          </a>
+          <div className="mt-10 grid gap-4 sm:grid-cols-4">
+            <ContactCard icon={<Mail className="h-5 w-5" />} label="Email" value="bagasmuzaqi116@gmail.com" href="mailto:bagasmuzaqi116@gmail.com" />
+            <ContactCard icon={<Linkedin className="h-5 w-5" />} label="LinkedIn" value="Anggito Rangkuti Bagas Muzaqi" href="https://www.linkedin.com/in/anggito-rangkuti-bagas-muzaqi/" />
+            <ContactCard icon={<PhoneCall className="h-5 w-5" />} label="Whatsapp" value="Whatsapp" href="https://wa.me/6281380716742" />
+            <ContactCard icon={<Instagram className="h-5 w-5" />} label="Instagram" value="Instagram" href="https://www.instagram.com/muzaqibagas" />
+          </div>          
         </div>
       </section>
 
       {/* FOOTER */}
       <footer className="border-t border-border py-10">
         <div className="mx-auto max-w-6xl px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
-          <div>© {new Date().getFullYear()} Ahmad Rizky. All rights reserved.</div>
+          <div>© {new Date().getFullYear()} Anggito Rangkuti Bagas Muzaqi. All rights reserved.</div>
           <div className="flex items-center gap-3">
             <a href="https://github.com" aria-label="GitHub" className="grid h-9 w-9 place-items-center rounded-md border border-border hover:bg-secondary transition-colors">
               <Github className="h-4 w-4" />
@@ -468,6 +520,64 @@ function PortfolioPage() {
           </div>
         </div>
       </footer>
+
+      <Dialog open={!!selectedProject} onOpenChange={(open) => !open && setSelectedProject(null)}>
+        {selectedProject && (
+          <DialogContent className="max-h-[85vh] max-w-5xl overflow-hidden p-0 sm:rounded-2xl">
+            <div className="grid gap-0 lg:grid-cols-[1.2fr_1fr]">
+              <div className="relative min-h-[300px] overflow-hidden bg-secondary lg:min-h-auto">
+                <img
+                  src={selectedProject.modalImage ?? selectedProject.image}
+                  alt={selectedProject.title}
+                  className="h-full w-full object-cover"
+                />
+              </div>
+              <div className="flex max-h-[85vh] flex-col overflow-y-auto p-6 lg:p-8 hide-scrollbar">
+                <DialogHeader className="text-left">
+                  <div className="text-xs uppercase tracking-[0.3em] text-muted-foreground">Project Detail</div>
+                  <DialogTitle className="mt-3 font-display text-3xl font-semibold leading-tight">
+                    {selectedProject.title}
+                  </DialogTitle>                  
+                </DialogHeader>
+
+                <div className="mt-6 space-y-6">
+                  <div>
+                    <h4 className="font-semibold">{selectedProject.title}</h4>
+                    <div className="mt-3">
+                      {(Array.isArray(selectedProject.overview)
+                        ? selectedProject.overview
+                        : [selectedProject.overview]
+                      ).map((paragraph, index) => (
+                        <p
+                          key={index}
+                          className="mb-4 text-sm leading-7 text-muted-foreground text-justify"
+                        >
+                          {paragraph}
+                        </p>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div>
+                    <h4 className="font-semibold">Tech Stack</h4>
+                    <div className="mt-3 flex flex-wrap items-center gap-4">
+                      {selectedProject.tech.map((tech) => (
+                        <img
+                          key={tech.name}
+                          src={tech.image}
+                          alt={tech.name}
+                          title={tech.name}
+                          className="h-10 w-10 object-contain"
+                        />
+                      ))}
+                    </div>
+                  </div>
+                </div>                
+              </div>
+            </div>
+          </DialogContent>
+        )}
+      </Dialog>
 
       {/* BACK TO TOP */}
       {showTop && (
@@ -483,11 +593,10 @@ function PortfolioPage() {
   );
 }
 
-function SectionHeader({ eyebrow, title, center }: { eyebrow: string; title: string; center?: boolean }) {
+function SectionHeader({ eyebrow, center }: { eyebrow: string; center?: boolean }) {
   return (
     <div className={center ? "text-center" : ""}>
-      <div className="font-mono text-xs uppercase tracking-widest text-primary">— {eyebrow}</div>
-      <h2 className="mt-2 font-display text-3xl md:text-4xl font-bold">{title}</h2>
+      <div className="font-mono text-xs uppercase tracking-widest text-primary">— {eyebrow}</div>      
     </div>
   );
 }
