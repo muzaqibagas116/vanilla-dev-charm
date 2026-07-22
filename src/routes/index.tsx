@@ -56,7 +56,7 @@ export const Route = createFileRoute("/")({
 
 const NAV = [
   { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
+  // { label: "About", href: "#about" },
   { label: "Skills", href: "#skills" },
   { label: "Projects", href: "#projects" },
   { label: "Experience", href: "#experience" },
@@ -88,13 +88,15 @@ const PROJECTS = [
     desc: "Admin analytics dashboard with real-time sales metrics, order management, and inventory tracking.",
     overview: [
       "GearVenture is a web-based outdoor equipment rental platform designed to make it easier for users to discover and rent various camping and hiking essentials. The application provides a catalog of outdoor equipment complete with product information and rental prices, allowing users to choose the gear that best suits their adventure needs.",
-
+      
       "In addition to the product catalog, GearVenture provides promotional information, search functionality, customer testimonials, and contact services to enhance the user experience. With a responsive and user-friendly interface, GearVenture aims to provide a practical and efficient way for users to find information and rent outdoor equipment.",
     ],
-    tech: [
-      { name: "Angular", image: angular },
-      { name: "TypeScript", image: typescript },
+    tech: [      
       { name: "MySQL", image: mysql },
+      { name: "Laravel", image: laravel },
+      { name: "PHP", image: php },
+      { name: "HTML", image: html },
+      { name: "CSS", image: css },
     ],
     image: project5,
     modalImage: project4,
@@ -278,14 +280,15 @@ function PortfolioPage() {
         <div className="mx-auto max-w-6xl px-6">
           <div className="grid gap-12 md:grid-cols-[1.3fr_1fr] md:items-center">
             <div className="animate-fade-up">              
-              <h1 className="mt-6 font-display text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.05]">
+              <h3 className="mt-6 font-display text-4xl sm:text-4xl md:text-3xl font-bold leading-[1.05]">
                 Hi, I'm <span className="text-gradient">Anggito Rangkuti Bagas Muzaqi</span>
                 <br />
                 <span className="text-foreground/90">a Web Developer.</span>
-              </h1>
+              </h3>
               <p className="mt-6 max-w-xl text-base md:text-lg text-muted-foreground leading-relaxed">
-                I design and build modern, responsive web applications with a focus on clean code,
-                delightful UX, and measurable performance. From landing pages to full-stack dashboards.
+                Final-year Software Engineering Technology student at IPB University with a focus on web application development. 
+                Experienced in building full-stack web applications, integrating RESTful APIs, designing relational databases, and 
+                applying MVC architecture and Clean Code principles to develop scalable, maintainable, and high-quality solutions.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <a
@@ -309,32 +312,24 @@ function PortfolioPage() {
               </div>
             </div>
 
-            <div className="relative mx-auto animate-float">
-              <div className="absolute -inset-6 bg-gradient-primary opacity-20 blur-3xl rounded-full" />
-              <div className="relative rounded-2xl border border-border bg-card p-4 shadow-card">
-                <pre className="font-mono text-xs leading-relaxed text-muted-foreground overflow-hidden">
-                  {`const dev = {
-                    name: "Ahmad Rizky",
-                    role: "Web Developer",
-                    stack: ["TS", "Angular",
-                            "Laravel", "Node"],
-                    coffee: true,
-                    shipping: "always" 
-                  };`}
-                </pre>
-                <div className="mt-3 flex gap-1.5">
-                  <span className="h-2 w-2 rounded-full bg-destructive/70" />
-                  <span className="h-2 w-2 rounded-full bg-accent/80" />
-                  <span className="h-2 w-2 rounded-full bg-primary/80" />
-                </div>
-              </div>
-            </div>
+            <img
+              src={profileImg}
+              alt="Anggito Rangkuti Bagas Muzaqi"
+              className="h-72 w-72 object-cover rounded-2xl border border-border shadow-card transition-all duration-300 hover:border-white"
+              style={{ transform: "rotate(20deg)", transition: "transform 0.3s ease, border-color 0.3s ease, transform 0.3s ease" }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = "rotate(0deg) scale(1.05)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = "rotate(20deg)";
+              }}
+            />
           </div>
         </div>
       </section>
 
       {/* ABOUT */}
-      <section id="about" className="py-24 border-t border-border">
+      {/* <section id="about" className="py-24 border-t border-border">
         <div className="mx-auto max-w-6xl px-6">
           <SectionHeader eyebrow="About"/>
           <div className="mt-12 grid gap-12 md:grid-cols-[auto_1fr] md:items-center" data-reveal>
@@ -355,23 +350,18 @@ function PortfolioPage() {
               </h3>
               <p className="mt-4 text-muted-foreground leading-relaxed">
                 I'm a Web Developer with a passion for turning ideas into fast, accessible, and
-                maintainable web experiences. I enjoy working across the stack — from crafting
-                pixel-perfect interfaces to designing clean REST APIs.
+                maintainable web experiences. I enjoy working across the stack from crafting
+                pixel perfect interfaces to designing clean REST APIs.
               </p>
               <p className="mt-4 text-muted-foreground leading-relaxed">
                 My focus is on modern JavaScript/TypeScript ecosystems, PHP/Laravel backends,
                 and building products that people actually love to use. I care about code quality,
                 developer experience, and shipping value continuously.
-              </p>
-              <div className="mt-6 grid grid-cols-3 gap-4 max-w-md">
-                <Stat n="30+" label="Projects" />
-                <Stat n="3+" label="Years" />
-                <Stat n="15+" label="Clients" />
-              </div>
+              </p>            
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* SKILLS */}
       <section id="skills" className="py-24 border-t border-border bg-secondary/30">
