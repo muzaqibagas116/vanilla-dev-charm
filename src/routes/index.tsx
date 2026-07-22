@@ -44,7 +44,7 @@ import angular from "@/assets/angular.png";
 import express from "@/assets/express.png";
 
 import mysql from "@/assets/mysql.png";
-import dbeaver from "@/assets/dbeaver.png";
+import dbeaver from "@/assets/DBeaver.png";
 
 import github from "@/assets/github.png";
 import figma from "@/assets/figma.png";
