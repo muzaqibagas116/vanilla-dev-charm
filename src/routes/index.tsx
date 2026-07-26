@@ -121,6 +121,12 @@ const CERTIFICATES = [
     images: [psb],
   },
   {
+    title: "2nd Place, T-Shirt Design Competition",
+    issuer: "BEM Faculty of Dentistry, Lambung Mangkurat University",
+    issued: "13 April 2024",
+    images: [designTshirtCompetition],
+  },
+  {
     title: "Scholarship for Reach a Dream 2023: Self Development Training for Future Scholarship Seeker",
     issuer: "BEM Vocational School, IPB University",
     issued: "October 2023",
@@ -131,13 +137,7 @@ const CERTIFICATES = [
     issuer: "Vocational School, IPB University",
     issued: "28 May 2023",
     images: [techtalk1, techtalk2],
-  },
-  {
-    title: "2nd Place, T-Shirt Design Competition",
-    issuer: "BEM Faculty of Dentistry, Lambung Mangkurat University",
-    issued: "13 April 2024",
-    images: [designTshirtCompetition],
-  }
+  },  
 ];
 
 const PROJECTS = [
