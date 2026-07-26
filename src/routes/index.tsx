@@ -56,6 +56,12 @@ import otsuka1 from "@/assets/otsuka1.jpeg";
 import otsuka2 from "@/assets/otsuka2.jpeg";
 import buildwithangga from "@/assets/buildwithangga.jpg";
 import dhht from "@/assets/dhht.jpg";
+import techtalk1 from "@/assets/techtalk1.jpg";
+import techtalk2 from "@/assets/techtalk2.jpg";
+import srd1 from "@/assets/srd1.png"
+import srd2 from "@/assets/srd2.png"
+import psb from "@/assets/psb.jpg";
+import designTshirtCompetition from "@/assets/designTshirtCompetition.jpg";
 
 export const Route = createFileRoute("/")({
   component: PortfolioPage,
@@ -108,6 +114,30 @@ const CERTIFICATES = [
     issued: "28 February 2024",
     images: [buildwithangga],
   },    
+  {
+    title: "Pekan Seni Budaya 2024",
+    issuer: "BEM Vocational School, IPB University",
+    issued: "October 2024",
+    images: [psb],
+  },
+  {
+    title: "Scholarship for Reach a Dream 2023: Self Development Training for Future Scholarship Seeker",
+    issuer: "BEM Vocational School, IPB University",
+    issued: "October 2023",
+    images: [srd1, srd2],
+  },
+  {
+    title: "Tech Talk 2023: Build & Deploy a Modern Website with React JS",
+    issuer: "Vocational School, IPB University",
+    issued: "28 May 2023",
+    images: [techtalk1, techtalk2],
+  },
+  {
+    title: "2nd Place, T-Shirt Design Competition",
+    issuer: "BEM Faculty of Dentistry, Lambung Mangkurat University",
+    issued: "13 April 2024",
+    images: [designTshirtCompetition],
+  }
 ];
 
 const PROJECTS = [
@@ -131,37 +161,37 @@ const PROJECTS = [
     live: "#",
     code: "#",
   },
-  {
-    title: "TaskFlow Kanban",
-    desc: "Collaborative task manager with drag-and-drop kanban boards, teams, and progress reporting.",
-    overview:
-      "A productivity app tailored for distributed teams who need smooth task collaboration, deadline visibility, and clearer work tracking.",      
-    tech: [
-      { name: "Laravel", image: laravel },
-      { name: "PHP", image: php },
-      { name: "MySQL", image: mysql },
-    ],
-    image: project2,
-    modalImage: project3,
-    live: "#",
-    code: "#",
-  },
-  {
-    title: "Saveur Restaurant Site",
-    desc: "Elegant restaurant landing page with online menu, reservation flow, and CMS-ready content.",
-    overview:
-      "A polished restaurant website crafted to showcase the brand, simplify reservations, and present the menu in a visually appealing format.",    
-    tech: [
-      { name: "JavaScript", image: javascript },
-      { name: "HTML", image: html },
-      { name: "CSS", image: css },
-      { name: "Express.js", image: express },
-    ],
-    image: project3,
-    modalImage: project2,
-    live: "#",
-    code: "#",
-  },
+  // {
+  //   title: "TaskFlow Kanban",
+  //   desc: "Collaborative task manager with drag-and-drop kanban boards, teams, and progress reporting.",
+  //   overview:
+  //     "A productivity app tailored for distributed teams who need smooth task collaboration, deadline visibility, and clearer work tracking.",      
+  //   tech: [
+  //     { name: "Laravel", image: laravel },
+  //     { name: "PHP", image: php },
+  //     { name: "MySQL", image: mysql },
+  //   ],
+  //   image: project2,
+  //   modalImage: project3,
+  //   live: "#",
+  //   code: "#",
+  // },
+  // {
+  //   title: "Saveur Restaurant Site",
+  //   desc: "Elegant restaurant landing page with online menu, reservation flow, and CMS-ready content.",
+  //   overview:
+  //     "A polished restaurant website crafted to showcase the brand, simplify reservations, and present the menu in a visually appealing format.",    
+  //   tech: [
+  //     { name: "JavaScript", image: javascript },
+  //     { name: "HTML", image: html },
+  //     { name: "CSS", image: css },
+  //     { name: "Express.js", image: express },
+  //   ],
+  //   image: project3,
+  //   modalImage: project2,
+  //   live: "#",
+  //   code: "#",
+  // },
 ];
 
 const EXPERIENCE = [
@@ -465,20 +495,7 @@ function PortfolioPage() {
                         {tech.name}
                       </span>
                     ))}
-                  </div>
-                  <div className="mt-6 flex gap-2 pt-2 border-t border-border">
-                    <button
-                      type="button"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setSelectedProject(p);
-                      }}
-                      className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-md bg-gradient-primary px-3 py-2 text-xs font-semibold text-primary-foreground hover:opacity-90"
-                    >
-                      <ExternalLink className="h-3.5 w-3.5" />
-                      View Details
-                    </button>
-                  </div>
+                  </div>                  
                 </div>
               </article>
             ))}
