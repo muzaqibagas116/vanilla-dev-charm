@@ -16,6 +16,9 @@ import {
   Sparkles,
   PhoneCall,
   Instagram,
+  ChevronLeft,
+  ChevronRight,
+  Download,
 } from "lucide-react";
 import {
   Dialog,
@@ -44,11 +47,15 @@ import angular from "@/assets/angular.png";
 import express from "@/assets/express.png";
 
 import mysql from "@/assets/mysql.png";
-import dbeaver from "@/assets/DBeaver.png";
 
 import github from "@/assets/github.png";
 import figma from "@/assets/figma.png";
 import vscode from "@/assets/vscode.png";
+
+import otsuka1 from "@/assets/otsuka1.jpeg";
+import otsuka2 from "@/assets/otsuka2.jpeg";
+import buildwithangga from "@/assets/buildwithangga.jpg";
+import dhht from "@/assets/dhht.jpg";
 
 export const Route = createFileRoute("/")({
   component: PortfolioPage,
@@ -58,6 +65,7 @@ const NAV = [
   { label: "Home", href: "#home" },
   // { label: "About", href: "#about" },
   { label: "Skills", href: "#skills" },
+  { label: "Certificates", href: "#certificates" },
   { label: "Projects", href: "#projects" },
   { label: "Experience", href: "#experience" },
   { label: "Contact", href: "#contact" },
@@ -74,12 +82,32 @@ const SKILLS = [
   { name: "Angular", cat: "Framework", image: angular },    
   { name: "Express.js", cat: "framework", image: express },
 
-  { name: "MySQL", cat: "Database", image: mysql },
-  { name: "DBeaver", cat: "Database", image: dbeaver },
+  { name: "MySQL", cat: "Database", image: mysql },  
   
   { name: "GitHub", cat: "Tools", image: github },
   { name: "Figma", cat: "Tools", image: figma },
   { name: "VS Code", cat: "Tools", image: vscode },
+];
+
+const CERTIFICATES = [
+  {
+    title: "Internship Certificate",
+    issuer: "PT Amerta Indah Otsuka",
+    issued: "24 July 2026",
+    images: [otsuka1, otsuka2],
+  },
+  {
+    title: "Internship Certificate",
+    issuer: "Department of Forest Products, IPB University",
+    issued: "25 December 2025",
+    images: [dhht],
+  },
+  {
+    title: "Complete UI Designer: Visual Design, Prototype, Usability Testing",
+    issuer: "BuildWithAngga",
+    issued: "28 February 2024",
+    images: [buildwithangga],
+  },    
 ];
 
 const PROJECTS = [
@@ -171,6 +199,8 @@ function PortfolioPage() {
   const [scrolled, setScrolled] = useState(false);
   const [showTop, setShowTop] = useState(false);
   const [selectedProject, setSelectedProject] = useState<(typeof PROJECTS)[number] | null>(null);
+  const [selectedCertificate, setSelectedCertificate] = useState<(typeof CERTIFICATES)[number] | null>(null);
+  const [certificateImageIndex, setCertificateImageIndex] = useState(0);
 
   useEffect(() => {
     const onScroll = () => {
@@ -299,11 +329,12 @@ function PortfolioPage() {
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </a>
                 <a
-                  href="#contact"
+                  href="/Anggito_Rangkuti_Bagas_Muzaqi_CV.pdf"
+                  target="_blank"
                   className="inline-flex items-center gap-2 rounded-lg border border-border bg-card px-6 py-3 text-sm font-semibold hover:bg-secondary transition-colors"
                 >
-                  <Mail className="h-4 w-4" />
-                  Contact Me
+                  <Download className="h-4 w-4" />
+                  Download CV
                 </a>
               </div>
 
@@ -390,7 +421,7 @@ function PortfolioPage() {
             ))}
           </div>
         </div>
-      </section>
+      </section>      
 
       {/* PROJECTS */}
       <section id="projects" className="py-24 border-t border-border">
@@ -477,8 +508,60 @@ function PortfolioPage() {
         </div>
       </section>
 
+      {/* CERTIFICATES */}
+      <section id="certificates" className="py-24 border-t border-border">
+        <div className="mx-auto max-w-6xl px-6">
+          <SectionHeader eyebrow="Certificates" />
+          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+
+            {CERTIFICATES.map((cert) => (
+
+              <article
+                key={cert.title}
+                onClick={() => {
+                  setSelectedCertificate(cert);
+                  setCertificateImageIndex(0);
+                }}
+                className="group cursor-pointer overflow-hidden rounded-2xl border border-border bg-card shadow-card hover:-translate-y-1 hover:border-primary/50 transition-all duration-300"
+              >
+
+                <div className="aspect-[4/3] overflow-hidden bg-secondary">
+
+                  <img
+                    src={cert.images[0]}
+                    alt={cert.title}
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+
+                </div>
+
+                <div className="p-5">
+
+                  <h3 className="font-display font-semibold">
+                    {cert.title}
+                  </h3>
+
+                  <p className="mt-1 text-sm text-muted-foreground">
+                    {cert.issuer}
+                  </p>
+
+                  <p className="mt-3 text-xs text-muted-foreground">
+                    Issued {cert.issued}
+                  </p>
+
+                </div>
+
+              </article>
+
+            ))}
+
+          </div>
+
+        </div>
+      </section>
+
       {/* CONTACT */}
-      <section id="contact" className="py-24 border-t border-border">
+      <section id="contact" className="py-24 border-t border-border bg-secondary/30">
         <div className="mx-auto max-w-5xl px-6 text-center" data-reveal>
           <SectionHeader eyebrow="Contact" center />
           <p className="mt-4 text-muted-foreground">
@@ -564,6 +647,63 @@ function PortfolioPage() {
                   </div>
                 </div>                
               </div>
+            </div>
+          </DialogContent>
+        )}
+      </Dialog>
+
+      <Dialog
+        open={!!selectedCertificate}
+        onOpenChange={(open) => {
+          if (!open) {
+            setSelectedCertificate(null);
+            setCertificateImageIndex(0);
+          }
+        }}
+      >
+        {selectedCertificate && (
+          <DialogContent className="max-w-6xl p-0 overflow-hidden">
+            <div className="relative">
+
+              <img
+                src={selectedCertificate.images[certificateImageIndex]}
+                alt={selectedCertificate.title}
+                className="w-full max-h-[85vh] object-contain"
+              />
+
+              {selectedCertificate.images.length > 1 && (
+                <>
+                  <button
+                    onClick={() =>
+                      setCertificateImageIndex((prev) =>
+                        prev === 0
+                          ? selectedCertificate.images.length - 1
+                          : prev - 1
+                      )
+                    }
+                    className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-black/60 p-3 text-white"
+                  >
+                    <ChevronLeft />
+                  </button>
+
+                  <button
+                    onClick={() =>
+                      setCertificateImageIndex((prev) =>
+                        prev === selectedCertificate.images.length - 1
+                          ? 0
+                          : prev + 1
+                      )
+                    }
+                    className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-black/60 p-3 text-white"
+                  >
+                    <ChevronRight />
+                  </button>
+
+                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 rounded-full bg-black/60 px-4 py-1 text-sm text-white">
+                    {certificateImageIndex + 1} / {selectedCertificate.images.length}
+                  </div>
+                </>
+              )}
             </div>
           </DialogContent>
         )}
