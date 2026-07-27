@@ -30,11 +30,10 @@ import {
 import profileImg from "@/assets/profile.jpg";
 import heroBg from "@/assets/hero-bg.jpg";
 
-import project1 from "@/assets/project-1.jpg";
-import project2 from "@/assets/project-2.jpg";
-import project3 from "@/assets/project-3.jpg";
+import project1 from "@/assets/project-1.png";
+import project2 from "@/assets/project-2.png";
+import project3 from "@/assets/project-3.png";
 import project4 from "@/assets/project-4.png";
-import project5 from "@/assets/project-5.png";
 
 import html from "@/assets/html.png";
 import css from "@/assets/css.png";
@@ -155,43 +154,30 @@ const PROJECTS = [
       { name: "PHP", image: php },
       { name: "HTML", image: html },
       { name: "CSS", image: css },
+      { name: "JavaScript", image: javascript },
     ],
-    image: project5,
-    modalImage: project4,
-    live: "#",
-    code: "#",
+    image: project1,
+    modalImage: project2,    
   },
-  // {
-  //   title: "TaskFlow Kanban",
-  //   desc: "Collaborative task manager with drag-and-drop kanban boards, teams, and progress reporting.",
-  //   overview:
-  //     "A productivity app tailored for distributed teams who need smooth task collaboration, deadline visibility, and clearer work tracking.",      
-  //   tech: [
-  //     { name: "Laravel", image: laravel },
-  //     { name: "PHP", image: php },
-  //     { name: "MySQL", image: mysql },
-  //   ],
-  //   image: project2,
-  //   modalImage: project3,
-  //   live: "#",
-  //   code: "#",
-  // },
-  // {
-  //   title: "Saveur Restaurant Site",
-  //   desc: "Elegant restaurant landing page with online menu, reservation flow, and CMS-ready content.",
-  //   overview:
-  //     "A polished restaurant website crafted to showcase the brand, simplify reservations, and present the menu in a visually appealing format.",    
-  //   tech: [
-  //     { name: "JavaScript", image: javascript },
-  //     { name: "HTML", image: html },
-  //     { name: "CSS", image: css },
-  //     { name: "Express.js", image: express },
-  //   ],
-  //   image: project3,
-  //   modalImage: project2,
-  //   live: "#",
-  //   code: "#",
-  // },
+  {
+    title: "SISTA",
+    desc: "A web-based seminar and Final Project management system for academic administration, document management, scheduling, and digital assessment.",
+    overview: [
+      "SISTA (Seminar and Final Project Information System) is a web-based platform that simplifies the entire seminar and final project process. Students can register for seminars and final projects, submit required documents, and track their progress, while lecturers and administrators can manage schedules, verify submissions, conduct assessments, and generate reports from a single centralized system.",
+
+      "I contributed to developing several core features, including seminar registration, document management, scheduling, digital rubric-based assessment, role-based access control, notifications, and PDF/Excel report."
+    ],  
+    tech: [      
+      { name: "MySQL", image: mysql },
+      { name: "Laravel", image: laravel },
+      { name: "PHP", image: php },
+      { name: "HTML", image: html },
+      { name: "CSS", image: css },
+      { name: "JavaScript", image: javascript },
+    ],
+    image: project3,
+    modalImage: project4,    
+  },  
 ];
 
 const EXPERIENCE = [
@@ -205,7 +191,7 @@ const EXPERIENCE = [
     role: "Web Developer",
     company: "Department of Forest Products, IPB University",
     period: "Jul 2025 - Dec 2025",
-    desc: "Designed and developed SISTA DHH, a Laravel-based seminar and thesis information system with multi-role access, document management, and automated PDF/Excel export features.",
+    desc: "Designed and developed SISTA DHH, a Laravel-based seminar and Final Project information system with multi-role access, document management, and automated PDF/Excel export features.",
   },
 ];
 
