@@ -329,7 +329,7 @@ function PortfolioPage() {
               <h3 className="mt-6 font-display text-4xl sm:text-4xl md:text-3xl font-bold leading-[1.05]">
                 Hi, I'm <span className="text-gradient">Anggito Rangkuti Bagas Muzaqi</span>
                 <br />
-                <span className="text-foreground/90">a Web Developer.</span>
+                <span className="text-white">a Web Developer.</span>
               </h3>
               <p className="mt-6 max-w-xl text-base md:text-lg text-muted-foreground leading-relaxed">
                 Final-year Software Engineering Technology student at IPB University with a focus on web application development. 
