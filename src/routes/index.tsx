@@ -27,7 +27,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import na from "@/assets/na.jpg";
+import na from "@/assets/NA.jpg";
 import profileImg from "@/assets/profile.jpg";
 import heroBg from "@/assets/hero-bg.jpg";
 
