@@ -27,6 +27,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import na from "@/assets/na.jpg";
 import profileImg from "@/assets/profile.jpg";
 import heroBg from "@/assets/hero-bg.jpg";
 
@@ -40,6 +41,9 @@ import css from "@/assets/css.png";
 import javascript from "@/assets/javascript.png";
 import typescript from "@/assets/typescript.png";
 import php from "@/assets/php.png";
+import nodejs from "@/assets/nodejs.svg";
+import bootstrap from "@/assets/bootstrap.svg";
+import prisma from "@/assets/prisma.png";
 
 import laravel from "@/assets/laravel.png";
 import angular from "@/assets/angular.png";
@@ -77,16 +81,26 @@ const NAV = [
 ];
 
 const SKILLS = [
+  // language
   { name: "HTML", cat: "Language", image: html },
   { name: "CSS", cat: "Language", image: css },
   { name: "JavaScript", cat: "Language", image: javascript },
   { name: "TypeScript", cat: "Language", image: typescript },
   { name: "PHP", cat: "Language", image: php },
 
+  // framework
   { name: "Laravel", cat: "framework", image: laravel },
   { name: "Angular", cat: "Framework", image: angular },    
   { name: "Express.js", cat: "framework", image: express },
+  { name: "Bootstrap", cat: "Framework", image: bootstrap },  
 
+  //Runtime
+  { name: "Node JS", cat: "Runtime", image: nodejs },
+  
+  //ORM (object raltional mapping)  
+  { name: "Prisma", cat: "ORM", image: prisma }, 
+
+  //database
   { name: "MySQL", cat: "Database", image: mysql },  
   
   { name: "GitHub", cat: "Tools", image: github },
@@ -177,7 +191,93 @@ const PROJECTS = [
     ],
     image: project3,
     modalImage: project4,    
-  },  
+  },     
+  {
+    title: "Digimat",
+    desc: "A web-based material and supplier management system for monitoring material information, workflows, and quality-related processes.",
+    overview: [
+      "Digimat (Digital Material) is a web-based application that streamlines material and supplier management by providing centralized access to visual design data, material flow processes, supplier audits, stock monitoring, and analysis results. The system also supports factory-based data filtering to improve operational efficiency.",
+
+      "I contributed to developing several core features, including Master Recipient, factory and plant filtering, supplier and material selection workflows, dashboard enhancements, frontend-backend API integration, and system bug fixes."
+    ],
+    tech: [
+      { name: "Angular", image: angular },
+      { name: "TypeScript", image: typescript },
+      { name: "Node.js", image: nodejs },
+      { name: "Express.js", image: express },
+      { name: "MySQL", image: mysql },
+      { name: "Prisma", image: prisma },
+      { name: "Bootstrap", image: bootstrap },
+    ],
+    image: na,
+    modalImage: na,
+  },
+  {
+  title: "LDS",
+    desc: "A web-based production and quality analysis management system for monitoring production data, laboratory results, and approval workflows.",
+    overview: [
+      "LDS (Laboratory Data System) is a web-based application designed to manage and monitor production data and laboratory quality analysis. The system provides features for production identity management, standard validation, analysis progress tracking, and approval workflows to ensure accurate and well-structured quality control.",
+
+      "I contributed to developing and enhancing the LDS ENMIX module, including Identity & Mixing management, Standard/UCL/LCL validation, Lock & Unlock System, Request Edit, Approval & Rejection workflows, Analysis Progress improvements, and frontend-backend integration."
+    ],
+    tech: [
+      { name: "Angular", image: angular },
+      { name: "TypeScript", image: typescript },
+      { name: "Node.js", image: nodejs },
+      { name: "Express.js", image: express },
+      { name: "MySQL", image: mysql },
+      { name: "Prisma", image: prisma },
+      { name: "Bootstrap", image: bootstrap },
+    ],
+    image: na,
+    modalImage: na,
+  },
+  {
+    title: "App Release",
+    desc: "A web-based application for managing Certificate of Analysis (COA) approval workflows and release processes.",
+
+    overview: [
+      "App Release is a web-based internal application designed to streamline the Certificate of Analysis (COA) approval and release process. The system manages approval workflows, status tracking, and COA generation to ensure a structured and efficient quality assurance process.",
+
+      "I contributed to developing and enhancing several core features, including COA Approval, Send to Leader workflow, Reject COA, approval status management, COA Generator integration, and system bug fixes."
+    ],
+
+    tech: [
+      { name: "Angular", image: angular },
+      { name: "TypeScript", image: typescript },
+      { name: "Node.js", image: nodejs },
+      { name: "Express.js", image: express },
+      { name: "MySQL", image: mysql },
+      { name: "Prisma", image: prisma },
+      { name: "Bootstrap", image: bootstrap },
+    ],
+
+    image: na,
+    modalImage: na,
+  },
+  {
+    title: "Complaint Management System",
+    desc: "A web-based complaint management system with traceability features for tracking production and quality-related data.",
+
+    overview: [      
+      "Complaint Management System (CMS) is an internal web-based application designed to support complaint handling through an integrated traceability system. The application enables users to search and analyze production data based on line, lot number, and product, while providing quality-related information through modules such as Critical Control Point (CCP), Production Process Abnormality Notes, In Process Control (IPC), Microbiology, and Raw Material & Packaging Material (RMPM).",
+
+      "I contributed to developing the Traceability module by implementing frontend interfaces, developing backend endpoints for searching data by line, lot number, and product, integrating the Critical Control Point (CCP), Production Process Abnormality Notes, In Process Control (IPC), Microbiology, and Raw Material & Packaging Material (RMPM) sections with the backend, and enhancing the overall traceability workflow."
+    ],
+
+    tech: [
+      { name: "Angular", image: angular },
+      { name: "TypeScript", image: typescript },
+      { name: "Node.js", image: nodejs },
+      { name: "Express.js", image: express },
+      { name: "MySQL", image: mysql },
+      { name: "Prisma", image: prisma },
+      { name: "Bootstrap", image: bootstrap },
+    ],
+
+    image: na,
+    modalImage: na,
+  },
 ];
 
 const EXPERIENCE = [
@@ -425,7 +525,7 @@ function PortfolioPage() {
                   alt={s.name}
                   width={48}
                   height={48}
-                  className="h-12 w-12 object-contain"
+                  className="h-12 w-12 object-contain rounded-sm"
                 />
                 <div>
                   <div className="text-xs font-mono text-muted-foreground">{s.cat}</div>
@@ -643,7 +743,7 @@ function PortfolioPage() {
                           src={tech.image}
                           alt={tech.name}
                           title={tech.name}
-                          className="h-10 w-10 object-contain"
+                          className="h-10 w-10 object-contain rounded-sm"
                         />
                       ))}
                     </div>
