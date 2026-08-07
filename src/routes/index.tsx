@@ -35,6 +35,16 @@ import project1 from "@/assets/project-1.png";
 import project2 from "@/assets/project-2.png";
 import project3 from "@/assets/project-3.png";
 import project4 from "@/assets/project-4.png";
+import digimat from "@/assets/digimat3.png";
+import digimat2 from "@/assets/digimat4.jpeg";
+import lds from "@/assets/lds3.jpeg";
+import lds2 from "@/assets/lds4.jpeg";
+import apprelease from "@/assets/apprelease3.jpeg";
+import apprelease2 from "@/assets/apprelease4.jpeg";
+import cmsrmpm from "@/assets/cmsrmpm2.jpeg";
+import cmsmicro from "@/assets/cmsmicro.jpeg";
+import cmsipc from "@/assets/cmsipc2.jpeg";
+import cmsproduction from "@/assets/cmsproduction.jpeg";
 
 import html from "@/assets/html.png";
 import css from "@/assets/css.png";
@@ -209,8 +219,8 @@ const PROJECTS = [
       { name: "Prisma", image: prisma },
       { name: "Bootstrap", image: bootstrap },
     ],
-    image: na,
-    modalImage: na,
+    image: digimat,
+    modalImage: digimat2,
   },
   {
   title: "LDS",
@@ -229,8 +239,8 @@ const PROJECTS = [
       { name: "Prisma", image: prisma },
       { name: "Bootstrap", image: bootstrap },
     ],
-    image: na,
-    modalImage: na,
+    image: lds,
+    modalImage: lds2,
   },
   {
     title: "App Release",
@@ -252,8 +262,8 @@ const PROJECTS = [
       { name: "Bootstrap", image: bootstrap },
     ],
 
-    image: na,
-    modalImage: na,
+    image: apprelease,
+    modalImage: apprelease2,
   },
   {
     title: "Complaint Management System",
@@ -275,8 +285,8 @@ const PROJECTS = [
       { name: "Bootstrap", image: bootstrap },
     ],
 
-    image: na,
-    modalImage: na,
+    image: cmsipc,
+    modalImage: cmsrmpm,
   },
 ];
 
@@ -705,7 +715,7 @@ function PortfolioPage() {
                 <img
                   src={selectedProject.modalImage ?? selectedProject.image}
                   alt={selectedProject.title}
-                  className="h-full w-full object-cover"
+                  className="h-full w-full object-contain"
                 />
               </div>
               <div className="flex max-h-[85vh] flex-col overflow-y-auto p-6 lg:p-8 hide-scrollbar">
