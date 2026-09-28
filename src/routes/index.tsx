@@ -308,15 +308,21 @@ const PROJECTS = [
 
 const EXPERIENCE = [
   {
+    role: "Universitas Terbuka",
+    company: "Fullstack Developer",
+    period: "Oct 2026 - Present",
+    desc: "development and maintenance of IT solutions at Universitas Terbuka. Contribute to system analysis, application development, API integration, database management, testing, debugging, and technical documentation while collaborating with teams to deliver and improve information systems.",
+  },
+  {
     role: "PT Amerta Indah Otsuka",
     company: "Fullstack Developer",
-    period: "Feb 2026 - Present",
+    period: "Feb 2026 - July 2026",
     desc: "Developed and maintained web application features using Angular and Express.js, including API integration and database management to support application stability.",
   },
   {
     role: "Web Developer",
     company: "Department of Forest Products, IPB University",
-    period: "Jul 2025 - Dec 2025",
+    period: "July 2025 - Dec 2025",
     desc: "Designed and developed SISTA DHH, a Laravel-based seminar and Final Project information system with multi-role access, document management, and automated PDF/Excel export features.",
   },
 ];
