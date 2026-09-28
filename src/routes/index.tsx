@@ -443,7 +443,7 @@ function PortfolioPage() {
               aria-label="Toggle theme"
               className="grid h-9 w-9 place-items-center rounded-md border border-border hover:bg-secondary transition-colors"
             >
-              {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+              {theme === "dark" ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
             </button>
             <button
               onClick={() => setMenuOpen((v) => !v)}
