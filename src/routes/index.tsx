@@ -346,6 +346,7 @@ function PortfolioPage() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [showTop, setShowTop] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
   const [selectedProject, setSelectedProject] = useState<(typeof PROJECTS)[number] | null>(null);
   const [selectedCertificate, setSelectedCertificate] = useState<(typeof CERTIFICATES)[number] | null>(null);
   const [certificateImageIndex, setCertificateImageIndex] = useState(0);
@@ -354,7 +355,29 @@ function PortfolioPage() {
     const onScroll = () => {
       setScrolled(window.scrollY > 20);
       setShowTop(window.scrollY > 600);
+
+      const sectionId = (() => {
+        const sections = Array.from(document.querySelectorAll("section[id]"));
+        if (sections.length === 0) return "home";
+
+        const offset = 140;
+        let current = "home";
+
+        for (const section of sections) {
+          const rect = section.getBoundingClientRect();
+          if (rect.top <= offset && rect.bottom >= offset) {
+            current = section.id;
+            break;
+          }
+        }
+
+        if (window.scrollY < 80) current = "home";
+        return current;
+      })();
+
+      setActiveSection(sectionId);
     };
+
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -392,16 +415,26 @@ function PortfolioPage() {
           </a>
 
           <ul className="hidden md:flex items-center gap-1">
-            {NAV.map((n) => (
-              <li key={n.href}>
-                <a
-                  href={n.href}
-                  className="px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors rounded-md"
-                >
-                  {n.label}
-                </a>
-              </li>
-            ))}
+            {NAV.map((n) => {
+              const sectionId = n.href.replace("#", "");
+              const isActive = activeSection === sectionId;
+
+              return (
+                <li key={n.href}>
+                  <a
+                    href={n.href}
+                    aria-current={isActive ? "page" : undefined}
+                    className={`px-3 py-2 text-sm font-medium rounded-md transition-colors ${
+                      isActive
+                        ? "bg-secondary text-foreground shadow-sm"
+                        : "text-muted-foreground hover:text-foreground"
+                    }`}
+                  >
+                    {n.label}
+                  </a>
+                </li>
+              );
+            })}
           </ul>
 
           <div className="flex items-center gap-2">
@@ -425,17 +458,26 @@ function PortfolioPage() {
         {menuOpen && (
           <div className="md:hidden border-t border-border bg-background/95 backdrop-blur">
             <ul className="flex flex-col px-6 py-3">
-              {NAV.map((n) => (
-                <li key={n.href}>
-                  <a
-                    href={n.href}
-                    onClick={() => setMenuOpen(false)}
-                    className="block py-2 text-sm font-medium text-muted-foreground hover:text-foreground"
-                  >
-                    {n.label}
-                  </a>
-                </li>
-              ))}
+              {NAV.map((n) => {
+                const sectionId = n.href.replace("#", "");
+                const isActive = activeSection === sectionId;
+
+                return (
+                  <li key={n.href}>
+                    <a
+                      href={n.href}
+                      onClick={() => setMenuOpen(false)}
+                      className={`block rounded-md px-2 py-2 text-sm font-medium transition-colors ${
+                        isActive
+                          ? "bg-secondary text-foreground"
+                          : "text-muted-foreground hover:text-foreground"
+                      }`}
+                    >
+                      {n.label}
+                    </a>
+                  </li>
+                );
+              })}
             </ul>
           </div>
         )}
@@ -453,19 +495,29 @@ function PortfolioPage() {
             WebkitMaskImage: "linear-gradient(to bottom, black 30%, transparent 100%)",
           }}
         />
+        <div className="hero-ambient absolute inset-0 -z-10" />
+        <div className="hero-grid absolute inset-0 -z-10 opacity-60" />
+        <div className="hero-orb hero-orb--one" />
+        <div className="hero-orb hero-orb--two" />
+        <div className="hero-orb hero-orb--three" />
+
         <div className="absolute inset-0 -z-10 bg-gradient-hero" />
 
         <div className="mx-auto max-w-6xl px-6">
           <div className="grid gap-12 md:grid-cols-[1.3fr_1fr] md:items-center">
-            <div className="animate-fade-up">              
+            <div className="animate-fade-up">
+              <div className="hero-badge hero-sheen text-sm font-medium text-foreground/80">
+                Anggito Rangkuti Bagas Muzaqi S.Tr.Kom
+              </div>
+
               <h3 className="mt-6 font-display text-4xl sm:text-4xl md:text-3xl font-bold leading-[1.05]">
                 Hi, I'm <span className="text-gradient">Anggito Rangkuti Bagas Muzaqi</span>
                 <br />
                 <span className="text-foreground/90 dark:text-white">a Web Developer.</span>
               </h3>
               <p className="mt-6 max-w-xl text-base md:text-lg text-muted-foreground leading-relaxed">
-                Graduate of Software Engineering Technology at IPB University with a focus on web application development. 
-                Experienced in building full-stack web applications, integrating RESTful APIs, designing relational databases, and 
+                Graduate of Software Engineering Technology at IPB University with a focus on web application development.
+                Experienced in building full-stack web applications, integrating RESTful APIs, designing relational databases, and
                 applying MVC architecture and Clean Code principles to develop scalable, maintainable, and high-quality solutions.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
@@ -487,22 +539,21 @@ function PortfolioPage() {
               </div>
 
               <div className="mt-10 flex items-center gap-6 text-sm text-muted-foreground">
-                <div className="flex items-center gap-2"><MapPin className="h-4 w-4" /> Tangerang, ID</div>                                
+                <div className="flex items-center gap-2"><MapPin className="h-4 w-4" /> Tangerang, ID</div>
               </div>
             </div>
 
-            <img
-              src={profileImg}
-              alt="Anggito Rangkuti Bagas Muzaqi"
-              className="h-72 w-72 object-cover rounded-2xl border border-border shadow-card transition-all duration-300 hover:border-white"
-              style={{ transform: "rotate(20deg)", transition: "transform 0.3s ease, border-color 0.3s ease, transform 0.3s ease" }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = "rotate(0deg) scale(1.05)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = "rotate(20deg)";
-              }}
-            />
+            <div className="hero-portrait-wrap">              
+              <div className="hero-ring hero-ring--inner" />
+              <div className="hero-stat hero-stat--top">
+                <Code2 className="h-3.5 w-3.5" /> Full-stack builder
+              </div>              
+              <img
+                src={profileImg}
+                alt="Anggito Rangkuti Bagas Muzaqi"
+                className="hero-portrait"
+              />
+            </div>
           </div>
         </div>
       </section>
