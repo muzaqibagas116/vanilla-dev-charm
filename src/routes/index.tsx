@@ -464,7 +464,7 @@ function PortfolioPage() {
                 <span className="text-foreground/90 dark:text-white">a Web Developer.</span>
               </h3>
               <p className="mt-6 max-w-xl text-base md:text-lg text-muted-foreground leading-relaxed">
-                Final-year Software Engineering Technology student at IPB University with a focus on web application development. 
+                Graduate of Software Engineering Technology at IPB University with a focus on web application development. 
                 Experienced in building full-stack web applications, integrating RESTful APIs, designing relational databases, and 
                 applying MVC architecture and Clean Code principles to develop scalable, maintainable, and high-quality solutions.
               </p>
