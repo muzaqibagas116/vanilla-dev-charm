@@ -140,13 +140,7 @@ const CERTIFICATES = [
     issuer: "Department of Forest Products, IPB University",
     issued: "25 December 2025",
     images: [dhht],
-  },
-  {
-    title: "Complete UI Designer: Visual Design, Prototype, Usability Testing",
-    issuer: "BuildWithAngga",
-    issued: "28 February 2024",
-    images: [buildwithangga],
-  },    
+  },  
   {
     title: "Pekan Seni Budaya 2024",
     issuer: "BEM Vocational School, IPB University",
@@ -159,6 +153,12 @@ const CERTIFICATES = [
     issued: "13 April 2024",
     images: [designTshirtCompetition],
   },
+  {
+    title: "Complete UI Designer: Visual Design, Prototype, Usability Testing",
+    issuer: "BuildWithAngga",
+    issued: "28 February 2024",
+    images: [buildwithangga],
+  },    
   {
     title: "Scholarship for Reach a Dream 2023: Self Development Training for Future Scholarship Seeker",
     issuer: "BEM Vocational School, IPB University",
