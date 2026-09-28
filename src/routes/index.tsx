@@ -78,6 +78,7 @@ import designTshirtCompetition from "@/assets/designTshirtCompetition.jpg";
 import habits1 from "@/assets/7habits1.jpg";
 import habits2 from "@/assets/7habits2.jpg";
 import habits3 from "@/assets/7habits3.jpg";
+import bnsp from "@/assets/bnsp.jpg";
 
 export const Route = createFileRoute("/")({
   component: PortfolioPage,
@@ -121,12 +122,18 @@ const SKILLS = [
   { name: "VS Code", cat: "Tools", image: vscode },
 ];
 
-const CERTIFICATES = [
+const CERTIFICATES = [  
   {
     title: "Internship Certificate",
     issuer: "PT Amerta Indah Otsuka",
     issued: "24 July 2026",
     images: [otsuka1, otsuka2],
+  },
+  {
+    title: "Software Engineer",
+    issuer: "BNSP",
+    issued: "23 July 2026",
+    images: [bnsp],
   },
   {
     title: "Internship Certificate",
