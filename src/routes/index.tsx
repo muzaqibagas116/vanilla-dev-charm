@@ -75,6 +75,9 @@ import srd1 from "@/assets/srd1.png"
 import srd2 from "@/assets/srd2.png"
 import psb from "@/assets/psb.jpg";
 import designTshirtCompetition from "@/assets/designTshirtCompetition.jpg";
+import habits1 from "@/assets/7habits1.jpg";
+import habits2 from "@/assets/7habits2.jpg";
+import habits3 from "@/assets/7habits3.jpg";
 
 export const Route = createFileRoute("/")({
   component: PortfolioPage,
@@ -160,6 +163,12 @@ const CERTIFICATES = [
     issuer: "Vocational School, IPB University",
     issued: "28 May 2023",
     images: [techtalk1, techtalk2],
+  },  
+  {
+    title: "7 Habits of Highly Effective College Students",
+    issuer: "FrenklinCovey Education",
+    issued: "2022",
+    images: [habits1, habits2, habits3],
   },  
 ];
 
